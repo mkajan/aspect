@@ -57,7 +57,7 @@ namespace aspect
         {
           if (custom_mesh == none)
             {
-              // if we are not using a custom mesh scheme, the mesh is generated
+              // If we are not using a custom mesh scheme, the mesh is generated
               // as per the original code.
               GridGenerator::hyper_shell (coarse_grid,
                                           Point<dim>(),
@@ -76,21 +76,21 @@ namespace aspect
             }
           else
             {
-              // if we are using a custom mesh scheme, we need to create
+              // If we are using a custom mesh scheme, we need to create
               // a new triangulation to extrude (this will be a 1D line in
               // 2D space, or a 2D surface in 3D space).
               Triangulation<dim-1,dim> sphere_mesh;
               GridGenerator::hyper_sphere (sphere_mesh);
               sphere_mesh.refine_global (initial_lateral_refinement);
 
-              // calculate the number of R_values wrt custom mesh scheme
+              // Calculate the number of R_values wrt custom mesh scheme
               unsigned int n_R_values;
               if (custom_mesh == slices)
                 n_R_values = n_slices+1;
               else
                 n_R_values = R_values_list.size()+2;
 
-              // allocate R_values wrt the number of slices
+              // Allocate R_values wrt the number of slices
               std::vector<double> R_values (n_R_values);
               if (custom_mesh == slices)
                 {
@@ -106,7 +106,8 @@ namespace aspect
                 }
               std::vector<Point<dim>>    points(R_values.size() * sphere_mesh.n_vertices());
 
-              // copy the array of points as many times as there will be slices,
+
+              // Copy the array of points as many times as there will be slices,
               // one slice at a time. The z-axis value are defined in slices_coordinates
               for (unsigned int point_layer = 0; point_layer < R_values.size(); ++point_layer)
                 {
@@ -119,7 +120,7 @@ namespace aspect
                     }
                 }
 
-              // then create the cells of each of the slices, one stack at a
+              // Then create the cells of each of the slices, one stack at a
               // time
               std::vector<CellData<dim>> cells;
               cells.reserve((R_values.size() - 1) * sphere_mesh.n_active_cells());
@@ -257,7 +258,7 @@ namespace aspect
     SphericalShell<dim>::
     get_used_boundary_indicators () const
     {
-      // follow what is described in the documentation of this class.
+      // Follow what is described in the documentation of this class.
       // see the documentation of the various GridGenerator::*hyper_shell
       // functions for a description of which boundary indicators are
       // set and how they correlate to what's used below
@@ -634,13 +635,14 @@ namespace aspect
                                    "\n\n"
                                    "The spherical shell may be generated as per the original "
                                    "code (with respect to the inner and outer radius, and an "
-                                   "initial number of cells along the circumference) or following "
+                                   "initial number of cells along circumference) or following "
                                    "a custom mesh scheme: list of radial values or number of "
-                                   "slices. A list of radial values subdivides the spherical "
-                                   "shell at specified radii. The number of slices subdivides "
-                                   "the spherical shell into N slices of equal thickness. The "
-                                   "custom spherical shell only works with an opening angle of "
-                                   "360 degrees."
+                                   "slices. A surface mesh is first generated and refined as "
+                                   "desired, before it is extruded radially. A list of radial "
+                                   "values subdivides the spherical shell at specified radii. "
+                                   "The number of slices subdivides the spherical shell into N "
+                                   "slices of equal thickness. The custom spherical shell only "
+                                   "works with an opening angle of 360 degrees."
                                    "\n\n"
                                    "Despite the name, this geometry does not imply the use of "
                                    "a spherical coordinate system when used in 2d. Indeed, "
