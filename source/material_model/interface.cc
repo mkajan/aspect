@@ -757,20 +757,20 @@ namespace aspect
           }
 
         average_property (operation, projection_matrix, expansion_matrix, values_out.viscosities);
-        average_property (operation, projection_matrix, expansion_matrix,
-                          values_out.densities);
-        average_property (operation, projection_matrix, expansion_matrix,
-                          values_out.thermal_expansion_coefficients);
-        average_property (operation, projection_matrix, expansion_matrix,
-                          values_out.specific_heat);
-        average_property (operation, projection_matrix, expansion_matrix,
-                          values_out.thermal_conductivities);
-        average_property (operation, projection_matrix, expansion_matrix,
-                          values_out.compressibilities);
-        average_property (operation, projection_matrix, expansion_matrix,
-                          values_out.entropy_derivative_pressure);
-        average_property (operation, projection_matrix, expansion_matrix,
-                          values_out.entropy_derivative_temperature);
+        //average_property (operation, projection_matrix, expansion_matrix,
+        //                  values_out.densities);
+        //average_property (operation, projection_matrix, expansion_matrix,
+        //                  values_out.thermal_expansion_coefficients);
+        //average_property (operation, projection_matrix, expansion_matrix,
+        //                  values_out.specific_heat);
+        //average_property (operation, projection_matrix, expansion_matrix,
+        //                  values_out.thermal_conductivities);
+        //average_property (operation, projection_matrix, expansion_matrix,
+        //                  values_out.compressibilities);
+        //average_property (operation, projection_matrix, expansion_matrix,
+        //                  values_out.entropy_derivative_pressure);
+        //average_property (operation, projection_matrix, expansion_matrix,
+        //                  values_out.entropy_derivative_temperature);
 
         // the reaction terms are unfortunately stored in reverse
         // indexing. it's also not quite clear whether these should
